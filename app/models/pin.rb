@@ -44,4 +44,13 @@ class Pin < ActiveRecord::Base
       self.destroy
     end
   end
+
+  def get_pins_of_related_boards
+    boards = JSON.parse(HTTParty.get("https://api.pinterest.com/v3/pins/#{self.uid}/related/board/?access_token=MTQzNTc4Mjo1NDEyNzY1ODYzNzMwMzg3NjU6MnwxMzkwNjgwNTAzOjAtLWRkYTBiNjc5ZGU5ZjEyNzkwMDQ0MmMwNDkwOTUzNjNlNjcxZGJkYmY=").body)['data']
+    for board in boards
+      pins = JSON.parse(HTTParty.get("https://api.pinterest.com/v3/boards/#{board['id']}/pins/?access_token=MTQzNTc4Mjo1NDEyNzY1ODYzNzMwMzg3NjU6MnwxMzkwNjgwNTAzOjAtLWRkYTBiNjc5ZGU5ZjEyNzkwMDQ0MmMwNDkwOTUzNjNlNjcxZGJkYmY=").body)['data']
+      pins = Pin.create pins.map { |pin| {:uid => pin['id'], :data => pin.to_json, :location_check => false} }
+      pins.each {|pin| pin.delay(:queue => 'location_check').check_location if pin.persisted?}
+    end
+  end
 end
