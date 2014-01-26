@@ -1,6 +1,6 @@
 require "bundler/capistrano"
 
-set :application, "blog_app"
+set :application, "pinterest_heatmap"
 set :user, "azureuser"
 
 set :scm, :git
