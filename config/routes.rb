@@ -3,6 +3,7 @@ Railsbase::Application.routes.draw do
   root :to =>'high_voltage/pages#show', id: 'home'
   get 'pinterest_search/:keyword' => 'pinterest_search#search'
   get 'pinterest_search' => 'pinterest_search#search'
+  resources :pins
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

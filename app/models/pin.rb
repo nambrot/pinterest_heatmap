@@ -1,5 +1,5 @@
 class Pin < ActiveRecord::Base
-
+  validates :uid, :uniqueness => true
   def self.fetch_pins
     response = JSON.parse(HTTParty.get("https://api.pinterest.com/v3/feeds/travel/?access_token=MTQzNTc4Mjo1NDEyNzY1ODYzNzMwMzg3NjU6MnwxMzkwNjgwNTAzOjAtLWRkYTBiNjc5ZGU5ZjEyNzkwMDQ0MmMwNDkwOTUzNjNlNjcxZGJkYmY=#{Bookmark.first ? '&bookmark=' + Bookmark.first.bookmark : ''}&page_size=200").body)
     if Bookmark.first

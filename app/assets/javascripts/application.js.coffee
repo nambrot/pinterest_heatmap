@@ -46,5 +46,9 @@ $(document).on 'ready page:load', ->
   window.travel_keyword = new PinterestKeyword()
   travel_keyword.on 'add', (pin) ->
     heatmapLayer.addDataPoint pin.toJSON()
+  travel_keyword.on 'redraw', ->
+    heatmapLayer.redraw()
   travel_keyword.fetch_pins()
+
+
  

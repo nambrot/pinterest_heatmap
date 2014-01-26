@@ -50,7 +50,6 @@
     addDataPoint: function(datapoint) {
         this._data.push(datapoint);
         this._cache.max = this._calculateMaxValue(this._data);
-        this.redraw();
     },
 
     _createTileProto: function () {

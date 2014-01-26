@@ -31,6 +31,7 @@ group :development do
   gem 'debugger'
 end
 
+gem 'kaminari'
 gem 'unicorn'
 gem 'zurb-foundation'
 gem 'bourbon'
