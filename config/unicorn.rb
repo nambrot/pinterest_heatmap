@@ -1,9 +1,11 @@
-worker_processes 3 # amount of unicorn workers to spin up
-timeout 10000
-@resque_pid = nil
-@resque_pid2 = nil
-
-before_fork do |server, worker|
-  # @resque_pid ||= spawn("bundle exec rake jobs:work")
-  # @resque_pid2 ||= spawn("bundle exec rake jobs:work")
-end
+worker_processes 2
+timeout 30
+listen "/tmp/unicorn.blog.sock"
+ 
+root = "/home/blogger/apps/blog_app/current"
+ 
+working_directory root
+ 
+pid "#{root}/tmp/pids/unicorn.pid"
+stderr_path "#{root}/log/unicorn.log"
+stdout_path "#{root}/log/unicorn.log"
