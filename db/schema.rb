@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140126031851) do
+ActiveRecord::Schema.define(version: 20140126043158) do
 
   create_table "bookmarks", force: true do |t|
     t.string   "bookmark"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "previous_bookmark"
   end
 
   create_table "delayed_jobs", force: true do |t|
