@@ -9,9 +9,6 @@ class Pin < ActiveRecord::Base
     else
       Bookmark.create({:bookmark => response['bookmark']})
     end
-    puts "https://api.pinterest.com/v3/feeds/#{feed}/?access_token=MTQzNTc4Mjo1NDEyNzY1ODYzNzMwMzg3NjU6MnwxMzkwNjgwNTAzOjAtLWRkYTBiNjc5ZGU5ZjEyNzkwMDQ0MmMwNDkwOTUzNjNlNjcxZGJkYmY=#{Bookmark.first ? '&bookmark=' + Bookmark.first.bookmark : ''}&page_size=100"
-    puts response
-    puts response['data']
     pins = Pin.create response['data'].map { |pin| {:uid => pin['id'], :data => pin.to_json, :location_check => false} }
     pins.each {|pin| pin.delay(:queue => 'location_check').check_location if pin.persisted?}
 
