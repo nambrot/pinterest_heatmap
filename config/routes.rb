@@ -1,5 +1,5 @@
 Railsbase::Application.routes.draw do
-  devise_for :users
+
   root :to =>'high_voltage/pages#show', id: 'home'
   get 'pinterest_search/:keyword' => 'pinterest_search#search'
   get 'pinterest_search' => 'pinterest_search#search'

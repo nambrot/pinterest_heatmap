@@ -31,7 +31,6 @@ group :development do
   gem 'debugger'
 end
 
-gem 'devise', ">= 3.1"
 gem 'zurb-foundation'
 gem 'bourbon'
 gem 'simple_form'
