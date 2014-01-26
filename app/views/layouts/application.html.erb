@@ -23,27 +23,6 @@
   </head>
 
   <body>
-    <aside id="global-nav-mobile">
-      <a href="#" id="menu-trigger">Where yo at?</a>
-    </aside>
-    <aside id='global-nav'>
-      <header>
-        <h2><%= link_to 'Where yo at?' , '/'  %></h2>
-        <h5>Tell yo friends where yo at</h5>
-      </header>
-      <nav>
-        <ul>
-          <li><%= link_to 'Home' , '/'  %></li>
-        </ul>
-        <ul>
-          <li>
-            <%= link_to "View mobile site", url_for(:mobile_site => 1)%>
-          </li>
-        </ul>
-      </nav>
-      
-      
-    </aside>
     <div id="container" class='row'>
       <%= yield %>
     </div>
