@@ -34,7 +34,7 @@ class Pin < ActiveRecord::Base
 
   def check_location
     parsed_data = JSON.parse self.data
-    response = JSON.parse(HTTParty.post('http://23.96.48.232:9000', :body => "in " + parsed_data['description'], :headers => {"Content-type" => "text/plain"}  ).body)
+    response = JSON.parse(HTTParty.post('http://191.234.38.200:9000', :body => "in " + parsed_data['description'], :headers => {"Content-type" => "text/plain"}  ).body)
     if response['locations'].length > 0
       self.location_check = true
       parsed_data['locationData'] = response['locations']
