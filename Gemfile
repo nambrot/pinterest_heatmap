@@ -41,6 +41,7 @@ gem 'leaflet-rails'
 gem 'httparty'
 gem 'rails-backbone'
 gem 'em-http-request'
+gem 'delayed_job_active_record'
 # Use sqlite3 as the database for Active Record
 
 

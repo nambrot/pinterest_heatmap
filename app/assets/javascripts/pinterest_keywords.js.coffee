@@ -13,7 +13,8 @@ class @PinterestKeyword extends Backbone.Collection
           @add
             lat: (pin.locationData.locations[0].latitude)
             lon: (pin.locationData.locations[0].longitude)
-            value: 1
+            value: Math.log(pin.repin_count + 1)
+            attributes: pin
       if @models.length < 2000
         @fetch_pins()
   get_location_of_pin: (pin) ->

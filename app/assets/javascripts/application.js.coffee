@@ -16,7 +16,6 @@
 # = require turbolinks
 # = require basic
 # = require leaflet
-# = require QuadTree
 # = require heatmap
 # = require underscore
 # = require backbone
@@ -31,22 +30,17 @@ $(document).on 'ready page:load', ->
 
 
   window.heatmapLayer = L.TileLayer.heatMap({
-                      radius: 10,
+                      radius: 20,
                       opacity: 0.8,
                       gradient: {
-                          0.45: "rgb(0,0,255)",
-                          0.55: "rgb(0,255,255)",
-                          0.65: "rgb(0,255,0)",
+                          0.15: "rgb(0,0,255)",
+                          0.25: "rgb(0,255,255)",
+                          0.45: "rgb(0,255,0)",
                           0.95: "yellow",
                           1.0: "rgb(255,0,0)"
                       }
                   })
-  
-  testData = {
-              max: 46,
-              data: [{lat: 33.5363, lon:-117.044, value: 1},{lat: 33.5608, lon:-117.24, value: 1}]
-          };
-  heatmapLayer.addData(testData.data);
+
   heatmapLayer.addTo(map)
 
   window.travel_keyword = new PinterestKeyword()
