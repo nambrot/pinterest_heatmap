@@ -12,7 +12,7 @@ class PinterestSearchController < ApplicationController
 
     #   EM::Iterator.new(response['data'], 10).each(
     #     proc { |pin, iter|
-    #       http = EventMachine::HttpRequest.new('http://23.96.48.232:9000').post(:body => "in " + pin['description'], :head => {"Content-type" => "text/plain"} ) 
+    #       http = EventMachine::HttpRequest.new('http://191.234.38.200:9000').post(:body => "in " + pin['description'], :head => {"Content-type" => "text/plain"} ) 
     #       http.callback do |response| 
     #         pin['locationData'] = JSON.parse(response.response)
     #         Pin.create :uid => pin['id'], :data => pin.to_json
