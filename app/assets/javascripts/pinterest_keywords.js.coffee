@@ -5,19 +5,19 @@ class @PinterestKeyword extends Backbone.Collection
   page: 1
   fetch_pins: ->
     console.log "fetch more pins"
-    url = '/pins.json?per_page=100&page=' + @page
+    url = '/pins.json?per_page=1000&page=' + @page
     $.getJSON url, (resp) =>
       @page += 1
       @bookmark = resp.bookmark
       $.each resp, (index, pin) =>
-        if pin.locationData? and pin.locationData.length > 0
+        if pin.locationData? and pin.locationData.length > 0 and pin.locationData[0].name != pin.locationData[0].countryName
           @add
             lat: (pin.locationData[0].latitude)
             lon: (pin.locationData[0].longitude)
             value: Math.log(pin.repin_count + 1)
             attributes: pin
       @trigger 'redraw'
-      if resp.length > 0
+      if resp.length > 0 and @models.length < 2000
         setTimeout((=>
                   @fetch_pins())
           , 100)
