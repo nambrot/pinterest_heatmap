@@ -11,5 +11,10 @@
  
  *= require foundation_and_overrides
  *= require basic
+ *= require leaflet
  *= require_self
  */
+
+#map {
+  height: 500px;
+}

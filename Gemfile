@@ -37,6 +37,10 @@ gem 'bourbon'
 gem 'simple_form'
 gem 'high_voltage'
 gem 'turbolinks'
+gem 'leaflet-rails'
+gem 'httparty'
+gem 'rails-backbone'
+gem 'em-http-request'
 # Use sqlite3 as the database for Active Record
 
 
